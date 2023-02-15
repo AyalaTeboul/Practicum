@@ -1,0 +1,17 @@
+<nav>
+    <ul>
+        <li>
+            <a routerLink="home">הבית</a>
+        </li>
+        <li>
+            <a routerLink="login">כניסה</a>
+        </li>
+        <li>
+            <a routerLink="dkjsklf">הרשמה</a>
+        </li>
+        <li>
+           <input type="button" value="יציאה" (click)="logOut()"/>
+        </li>
+        <h3>ברוכים הבאים ל:{{userName?userName:"guest"}}</h3>
+    </ul>
+</nav>

@@ -1,0 +1,140 @@
+<form id="myform" (ngSubmit)="regist();" class="addPerson-form" #myForm="ngForm">
+
+  <!-- firstName input -->
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>First Name</mat-label>
+    <input matInput name="fName" [(ngModel)]="this.person.firstName" #fName="ngModel" required>
+    <mat-error *ngIf="fName.touched&&fName.errors?.['required']">You must enter a value</mat-error>
+  </mat-form-field>
+
+  <!-- lastName input -->
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Last Name</mat-label>
+    <input matInput name="lName" [(ngModel)]="this.person.lastName" #lName="ngModel" required>
+    <mat-error *ngIf="lName.touched&&lName.errors?.['required']">You must enter a value</mat-error>
+  </mat-form-field>
+
+  <!-- id number input -->
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Id Number</mat-label>
+    <input matInput minlength="9" maxlength="9" name="IdNum" [pattern]="this.pattern" [(ngModel)]="person.idNumber"
+      #IdNum="ngModel" required>
+    <mat-error *ngIf="IdNum.touched&&IdNum.errors?.['required']">You must enter a value</mat-error>
+    <mat-error
+      *ngIf="IdNum.touched&&IdNum.errors?.['minlength']||IdNum.touched&&IdNum.errors?.['minlength']||IdNum.touched&&IdNum.errors?.['pattern']">
+      you must enter 9 digits</mat-error>
+  </mat-form-field>
+  <!-- date input -->
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="this.person.dateOfBirth" name="dOfB" #dOfB="ngModel" required>
+    <mat-error *ngIf="dOfB.touched&&dOfB.errors?.['required']">choose a date</mat-error>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker touchUi #picker></mat-datepicker>
+  </mat-form-field>
+
+  <!-- male or female input -->
+  <mat-form-field appearance="fill" class="example-full-width">
+    <mat-label>Male or Female</mat-label>
+    <mat-select required [(ngModel)]="this.person.maleOrFemale" name="mOf" #mOf="ngModel">
+      <mat-option [value]="true">
+        Male
+      </mat-option>
+      <mat-option [value]="false">
+        Female
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="mOf.touched&&IdNum.errors?.['required']">Please choose one</mat-error>
+  </mat-form-field>
+
+  <!--HMO input -->
+  <mat-form-field appearance="fill" class="example-full-width">
+    <mat-label>HMO</mat-label>
+    <mat-select required [(ngModel)]="this.person.hmoid" name="h" #h="ngModel">
+      <mat-option *ngFor="let x of HMOs" [value]="x.hmoid">
+        {{x.hmoname}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="h.touched&&IdNum.errors?.['required']">Please choose a HMO</mat-error>
+  </mat-form-field>
+
+  <!---------------------------------------children------------------------------------->
+
+  <button type="button" mat-raised-button class="example-full-width" (click)="addChild()"
+    [disabled]="!myForm.valid&&this.isFirstChild">Add
+    Child</button>
+
+  <div *ngFor="let x of children;let i=index">
+    <p class="childTitle">child {{i+1}}</p>
+
+    <!-- firstName input -->
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input matInput  [(ngModel)]="this.children[i].firstName" #fNameChild="ngModel"[ngModelOptions]="{standalone: true}"  required >
+      <mat-error *ngIf="fNameChild.touched&&fNameChild.errors?.['required']">You must enter a value</mat-error>
+    </mat-form-field>
+
+    <!-- lastName input -->
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input matInput  ngModel [(ngModel)]="this.children[i].lastName"#lNameChild="ngModel" [ngModelOptions]="{standalone: true}"  required>
+      <mat-error *ngIf="lNameChild.touched&&lNameChild.errors?.['required']">You must enter a value</mat-error>
+    </mat-form-field>
+
+    <!-- id number input -->
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Id Number</mat-label>
+      <input matInput minlength="9" maxlength="9" pattern="[0-9]{9}"  ngModel #idNumChild="ngModel"
+        [(ngModel)]="this.children[i].idNumber"[ngModelOptions]="{standalone: true}" required>
+      <mat-error *ngIf="idNumChild.touched&&IdNum.errors?.['required']">You must enter a value</mat-error>
+      <mat-error
+        *ngIf="idNumChild.touched&&idNumChild.errors?.['minlength']||idNumChild.touched&&idNumChild.errors?.['minlength']||idNumChild.touched&&idNumChild.errors?.['pattern']">
+        you must enter 9 digits</mat-error>
+    </mat-form-field>
+
+    <!-- date input -->
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" required  [(ngModel)]="this.date" #dOfBChild="ngModel"
+      [ngModelOptions]="{standalone: true}" >
+      <mat-error *ngIf="dOfBChild.touched&&dOfBChild.errors?.['required']">choose a date</mat-error>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker touchUi #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <br>
+  <button type="submit" mat-raised-button class="example-full-width" [disabled]="!myForm.valid" (click)="exportexcel()">Send Form</button>
+  <table id="excel-table">
+    <tr>
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>HMO</th>
+        <th>IdNumber</th>
+        <th>Date Of Birth</th>
+        <th>Male Or Female</th>
+    </tr>
+    <tr>
+        <td>{{person.personId}}</td>
+        <td>{{person.firstName}}</td>
+        <td>{{person.lastName}}</td>
+        <td>{{hmoidFunction(person.hmoid)}}</td>
+        <td>{{person.idNumber}}</td>
+        <td>{{person.dateOfBirth}}</td>
+        <td>{{maleOrFemaleFunction(person.maleOrFemale)}}</td>
+    </tr>
+ 
+  <tr>
+      <td colspan="7">Children</td>
+  </tr >
+  <tr *ngFor="let item of children">
+    <td>{{item.personId}}</td>
+    <td>{{item.firstName}}</td>
+    <td>{{item.lastName}}</td>
+    <td>{{hmoidFunction(item.hmoid)}}</td>
+    <td>{{item.idNumber}}</td>
+    <td>{{item.dateOfBirth}}</td>
+    <td>{{maleOrFemaleFunction(item.maleOrFemale)}}</td>
+</tr>
+</table>
+</form>
