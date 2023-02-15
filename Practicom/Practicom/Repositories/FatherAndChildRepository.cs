@@ -34,7 +34,7 @@ namespace Repository.Repositories
             return null;
         }
 
-        public Task<FatherAndChild> UpdateDataAsync(string idNumber, bool mOf, int Hmoid)
+        public Task<FatherAndChild> UpdateDataAsync(string idNumber, bool? mOf, int? Hmoid)
         {
             return null;
         }

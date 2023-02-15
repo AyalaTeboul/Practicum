@@ -38,16 +38,16 @@ namespace WebApi.Controllers
         public async Task<PersonDto> Post([FromBody] PersonModel person)
         {
             PersonDto data = new PersonDto();
-            data.LastName = person.LastName;
-            data.FirstName = person.FirstName;
-            data.DateOfBirth = person.DateOfBirth;
-            data.IdNumber = person.IdNumber;
-            data.MaleOrFemale = person.MaleOrFemale;
-            data.Hmoid = person.Hmoid;
+            data.lastName = person.LastName;
+            data.firstName = person.FirstName;
+            data.dateOfBirth = person.DateOfBirth;
+            data.idNumber = person.IdNumber;
+            data.maleOrFemale = person.MaleOrFemale;
+            data.hmoid = person.Hmoid;
             return await dataServices.AddDataAsync(data);
         }
         [HttpPut("{idNumber}/{mOf}/{hmoid}")]
-        public async Task<PersonDto> Put(string idNumber,bool mOf,int hmoid)
+        public async Task<PersonDto> Put(string idNumber,bool? mOf,int? hmoid)
         {
             return await dataServices.UpdateDataAsync(idNumber, mOf,hmoid);
         }

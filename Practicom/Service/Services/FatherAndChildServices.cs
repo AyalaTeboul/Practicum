@@ -36,7 +36,7 @@ namespace Service.Services
             return null;
         }
 
-        public Task<FatherAndChildDto> UpdateDataAsync(string idNumber,bool mOf,int hmoid)
+        public Task<FatherAndChildDto> UpdateDataAsync(string idNumber,bool? mOf,int? hmoid)
         {
             return null;
         }

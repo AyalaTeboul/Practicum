@@ -33,7 +33,7 @@ namespace Service.Services
         {
             return mapper.Map<PersonDto>(await dataRepository.GetDataByIdNumberAsync(idNumber));
         }
-        public async Task<PersonDto> UpdateDataAsync(string idNumber, bool mOf, int hmoid)
+        public async Task<PersonDto> UpdateDataAsync(string idNumber, bool? mOf, int? hmoid)
         {
             return mapper.Map<PersonDto>(await dataRepository.UpdateDataAsync(idNumber,mOf,hmoid));
         }

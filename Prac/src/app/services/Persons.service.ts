@@ -28,7 +28,6 @@ getAllPersons():Observable<Person[]>{
     return this.http.post<Person>(`${this.baseRouteUrl}`, newPer)
   }
   getPersonByIdNumber(idNumber: string) {
-
     return this.http.get<Person>(`${this.baseRouteUrl}/${idNumber}`)
   }
   updatePerson(per: Person): Observable<Person> {

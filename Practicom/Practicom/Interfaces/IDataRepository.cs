@@ -11,6 +11,6 @@ namespace Repository.Interfaces
         Task<List<T>> GetAllAsync();
         Task<T> GetDataByIdNumberAsync(string idNumber);
         Task<T> AddDataAsync(T entity);
-        Task<T> UpdateDataAsync(string idNumber, bool mOf, int Hmoid);
+        Task<T> UpdateDataAsync(string idNumber, bool? mOf, int? Hmoid);
     }
 }

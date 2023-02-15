@@ -11,6 +11,6 @@ namespace Service.Interface
         Task<List<T>> GetAllAsync();
         Task<T> GetDataByIdAsync(string idNumber);
         Task<T> AddDataAsync(T entity);
-        Task<T> UpdateDataAsync(string idNumber, bool mOf, int Hmoid);
+        Task<T> UpdateDataAsync(string idNumber, bool? mOf, int? Hmoid);
     }
 }

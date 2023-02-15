@@ -27,7 +27,7 @@
   <!-- date input -->
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Choose a date</mat-label>
-    <input matInput [matDatepicker]="picker" [(ngModel)]="this.person.dateOfBirth" name="dOfB" #dOfB="ngModel" required>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="this.date" name="dOfB" #dOfB="ngModel" required>
     <mat-error *ngIf="dOfB.touched&&dOfB.errors?.['required']">choose a date</mat-error>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker touchUi #picker></mat-datepicker>
@@ -123,7 +123,6 @@
         <td>{{person.dateOfBirth}}</td>
         <td>{{maleOrFemaleFunction(person.maleOrFemale)}}</td>
     </tr>
- 
   <tr>
       <td colspan="7">Children</td>
   </tr >

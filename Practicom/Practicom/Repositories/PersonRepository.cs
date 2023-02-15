@@ -19,9 +19,19 @@ namespace Repository.Repositories
         }
         public async Task<Person> AddDataAsync(Person entity)
         {
-            EntityEntry<Person> e = await _context.Persons.AddAsync(entity);
-            await _context.SaveChangesAsync();
-            return e.Entity;
+            Person p = await GetDataByIdNumberAsync(entity.IdNumber);
+            if (p == null)
+            {
+                EntityEntry<Person> e = await _context.Persons.AddAsync(entity);
+                await _context.SaveChangesAsync();
+                return e.Entity;
+            }
+            else
+            {
+                return await UpdateDataAsync(entity.IdNumber, entity.MaleOrFemale, entity.Hmoid);
+            }
+
+
         }
         public async Task<List<Person>> GetAllAsync()
         {
@@ -33,12 +43,12 @@ namespace Repository.Repositories
             return await _context.Persons.FirstOrDefaultAsync(x => x.IdNumber == idNumber);
         }
 
-        public async Task<Person> UpdateDataAsync(string idNumber, bool mOf, int hmoid)
+        public async Task<Person> UpdateDataAsync(string idNumber, bool? mOf, int? hmoid)
         {
-            Person p=await _context.Persons.FirstAsync(x => x.IdNumber == idNumber);
-            p.MaleOrFemale= mOf;
-            p.Hmoid= hmoid;
-            EntityEntry<Person> e =  _context.Persons.Update(p);
+            Person p = await _context.Persons.FirstAsync(x => x.IdNumber == idNumber);
+            p.MaleOrFemale = mOf;
+            p.Hmoid = hmoid;
+            EntityEntry<Person> e = _context.Persons.Update(p);
             await _context.SaveChangesAsync();
             return e.Entity;
         }

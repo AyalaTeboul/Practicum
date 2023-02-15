@@ -32,7 +32,7 @@ namespace Repository.Repositories
             return null;
         }
 
-        public Task<Hmo> UpdateDataAsync(string idNumber, bool mOf, int Hmoid)
+        public Task<Hmo> UpdateDataAsync(string idNumber, bool? mOf, int? Hmoid)
         {
             return null;
         }

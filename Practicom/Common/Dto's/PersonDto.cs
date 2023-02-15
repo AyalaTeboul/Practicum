@@ -8,18 +8,18 @@ namespace Common.Dto_s
 {
     public class PersonDto
     {
-        public int PersonId { get; set; }
+        public int personId { get; set; }
 
-        public string? FirstName { get; set; }
+        public string? firstName { get; set; }
 
-        public string? LastName { get; set; }
+        public string? lastName { get; set; }
 
-        public int? Hmoid { get; set; }
+        public int? hmoid { get; set; }
 
-        public string? IdNumber { get; set; }
+        public string? idNumber { get; set; }
 
-        public DateTime? DateOfBirth { get; set; }
+        public DateTime? dateOfBirth { get; set; }
 
-        public bool? MaleOrFemale { get; set; }
+        public bool? maleOrFemale { get; set; }
     }
 }

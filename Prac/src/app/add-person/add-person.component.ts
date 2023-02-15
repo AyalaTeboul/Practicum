@@ -50,7 +50,6 @@ export class AddPersonComponent implements OnInit {
     if (this.userService.getStorage() == "")
       this.person = new Person(0, "", "", 0, "", null, false)
     else this.person = this.userService.getStorage();
-    console.log(this.person);
   }
   ngOnDestroy(): void {
     this.newForService.FirstName = this.person.firstName;
@@ -71,14 +70,15 @@ export class AddPersonComponent implements OnInit {
   }
   addPersonToServer() {
     //בדיקה אם האדם קיים כבר
-    try {
-      this.personService.getPersonByIdNumber(this.person.idNumber).subscribe(ok => {
-        this.personFromServer = ok;
-        console.log("get" + this.personFromServer);
-      });
-    }
-    catch (Error) {
-    }
+    // try {
+    //   this.personService.getPersonByIdNumber(this.person.idNumber).subscribe(ok => {
+    //     this.personFromServer = ok;
+    //     console.log(ok);
+    //   });
+    // }
+    // catch (Error) {
+      
+    // }
     //אם קיים- עדכון בשרת
     // if (this.personFromServer) {
     // try {
@@ -100,8 +100,6 @@ export class AddPersonComponent implements OnInit {
       console.log(this.personFromServer);
       this.personService.addNewPerson(this.person).subscribe(ok => {
         this.personFromServer = ok;
-
-
         if (this.personFromServer.maleOrFemale)
           this.idFather = this.personFromServer.personId
         else
