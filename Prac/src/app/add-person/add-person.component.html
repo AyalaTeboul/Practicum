@@ -50,12 +50,12 @@
   <!--HMO input -->
   <mat-form-field appearance="fill" class="example-full-width">
     <mat-label>HMO</mat-label>
-    <mat-select required [(ngModel)]="this.person.hmoid" name="h" #h="ngModel">
+    <mat-select  [(ngModel)]="this.person.hmoid" name="h" #h="ngModel" required>
       <mat-option *ngFor="let x of HMOs" [value]="x.hmoid">
         {{x.hmoname}}
       </mat-option>
     </mat-select>
-    <mat-error *ngIf="h.touched&&IdNum.errors?.['required']">Please choose a HMO</mat-error>
+    <mat-error *ngIf="h.touched&&h.errors?.['required']">Please choose a HMO</mat-error>
   </mat-form-field>
 
   <!---------------------------------------children------------------------------------->
