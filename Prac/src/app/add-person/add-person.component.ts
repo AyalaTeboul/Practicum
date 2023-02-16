@@ -69,32 +69,7 @@ export class AddPersonComponent implements OnInit {
     this.isFirstChild = true
   }
   addPersonToServer() {
-    //בדיקה אם האדם קיים כבר
-    // try {
-    //   this.personService.getPersonByIdNumber(this.person.idNumber).subscribe(ok => {
-    //     this.personFromServer = ok;
-    //     console.log(ok);
-    //   });
-    // }
-    // catch (Error) {
-      
-    // }
-    //אם קיים- עדכון בשרת
-    // if (this.personFromServer) {
-    // try {
-    //   this.personService.updatePerson(this.person).subscribe(ok => {
-    //     this.personFromServer = ok;
-    //   if (this.personFromServer.maleOrFemale)
-    //   this.idFather = this.personFromServer.personId
-    // else
-    // this.idMother=this.personFromServer.personId
-    //     console.log(this.personFromServer);
-    //   });
-    // } catch (Error) {
-    //   alert("התרחשה שגיאה בהתחברות לשרת")
-    // }
-
-    //אחרת- הוספה לשרת
+    //הוספה לשרת
     // else{
     try {
       console.log(this.personFromServer);
@@ -125,16 +100,19 @@ export class AddPersonComponent implements OnInit {
   regist() {
     console.log("hgfds");
     for (let index = 0; index < this.children.length; index++) {
-      //הוספת הילד לDB 
-      //בדיקה אם האדם קיים כבר
+     
+      // הוספת ילד לשרת
       try {
-        this.personService.getPersonByIdNumber(this.children[index].idNumber).subscribe(ok => {
+        this.personService.addNewPerson(this.children[index]).subscribe(ok => {
           this.personFromServer = ok;
+          this.idChild = this.personFromServer.personId
         });
       }
       catch (Error) {
+        alert("התרחשה שגיאה בהתחברות לשרת")
       }
-      //אם קיים- עדכון בשרת
+     
+ //עדכון האבא בשרת
       // if (this.personFromServer) {
       // try {
       //   this.personService.updatePerson(this.children[index].person).subscribe(ok => {
@@ -145,20 +123,6 @@ export class AddPersonComponent implements OnInit {
       // } catch (Error) {
       //   alert("התרחשה שגיאה בהתחברות לשרת")
       // }
-
-      //אחרת- הוספה לשרת
-      // else{
-      try {
-        this.personService.addNewPerson(this.children[index]).subscribe(ok => {
-          this.personFromServer = ok;
-          this.idChild = this.personFromServer.personId
-        });
-      }
-      catch (Error) {
-        alert("התרחשה שגיאה בהתחברות לשרת")
-      }
-      // }
-
       //הוספת הקשר הורה- בן
       try {
         this.fatherAndChildService.FatherAndChildPost(new FatherAndChild(this.idChild, this.idFather, this.idMother)).subscribe(ok => {
