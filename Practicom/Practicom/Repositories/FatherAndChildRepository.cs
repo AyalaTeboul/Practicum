@@ -19,9 +19,29 @@ namespace Repository.Repositories
         }
         public async Task<FatherAndChild> AddDataAsync(FatherAndChild entity)
         {
-            EntityEntry<FatherAndChild> e = await _context.FatherAndChildren.AddAsync(entity);
-            await _context.SaveChangesAsync();
-            return e.Entity;
+            EntityEntry<FatherAndChild> e;
+
+            //if (_context.FatherAndChildren.Any())
+            //{
+            //    FatherAndChild f = await _context.FatherAndChildren.FirstAsync(x => x.ChildId == entity.ChildId);
+            //    if (f != null)
+            //    {
+            //        if (f.FatherId == null)
+            //            f.FatherId = entity.FatherId;
+            //        else f.MotherId = entity.MotherId;
+            //        e = _context.FatherAndChildren.Update(f);
+            //        await _context.SaveChangesAsync();
+            //        return e.Entity;
+            //    }
+            //}
+
+            //else
+            //{
+                e = await _context.FatherAndChildren.AddAsync(entity);
+                await _context.SaveChangesAsync();
+                return e.Entity;
+            //}
+            //return null;
         }
 
         public async Task<List<FatherAndChild>> GetAllAsync()

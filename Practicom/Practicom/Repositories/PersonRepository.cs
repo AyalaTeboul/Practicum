@@ -30,8 +30,6 @@ namespace Repository.Repositories
             {
                 return await UpdateDataAsync(entity.IdNumber, entity.MaleOrFemale, entity.Hmoid);
             }
-
-
         }
         public async Task<List<Person>> GetAllAsync()
         {
