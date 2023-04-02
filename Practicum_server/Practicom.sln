@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Practicom\Repository.csproj", "{575BD9BF-DEC0-47C3-B115-53F5ED93A6A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Practicom\Repository.csproj", "{575BD9BF-DEC0-47C3-B115-53F5ED93A6A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Context", "Context\Context.csproj", "{42294681-DC77-4EF6-BA47-7D709A7F41FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Context", "Context\Context.csproj", "{42294681-DC77-4EF6-BA47-7D709A7F41FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{26386B6C-2E07-44AF-861E-DFC097C5950B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{26386B6C-2E07-44AF-861E-DFC097C5950B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{3DF57761-0754-49E1-85B1-536034DB4ED2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.csproj", "{3DF57761-0754-49E1-85B1-536034DB4ED2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{554C115E-D247-40F8-B56E-1B97802FC049}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{554C115E-D247-40F8-B56E-1B97802FC049}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
